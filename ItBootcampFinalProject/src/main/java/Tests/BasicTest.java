@@ -65,7 +65,7 @@ public class BasicTest {
 
     @AfterClass
     public void afterClass() throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         driver.quit();
     }
 }

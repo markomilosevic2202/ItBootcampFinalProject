@@ -3,6 +3,10 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class SignupPage {
      WebDriver driver;
@@ -22,6 +26,15 @@ public class SignupPage {
     public WebElement getInputConfirmPassword(){
         return driver.findElement(By.id("confirmPassword"));
     }
+    public WebElement getButtonSignMeUp(){
+        return driver.findElement(By.xpath("//*[@class='v-btn v-btn--contained theme--light v-size--default secondary']"));
+    }
+    public void getVisualElementMessage() {
+        WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//*[@class='v-card v-sheet theme--light']")));
+    }
+
 }
 //Polje za unos imena
 //Polje za unos emaila

@@ -3,6 +3,10 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class NavPage {
     WebDriver driver;
@@ -28,6 +32,16 @@ public class NavPage {
     public WebElement getSignUpLink(){
         return driver.findElement(By.xpath("//*[@class='v-toolbar__items']/a[4]"));
     }
+
+    public WebElement getHomeLink(){
+        return driver.findElement(By.xpath("//*[@class='v-toolbar__items']/a[1]"));
+    }
+    public void getVisualElementMessage() {
+        WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//*[@class='v-card v-sheet theme--light']")));
+    }
+
 
 }
 //Home link

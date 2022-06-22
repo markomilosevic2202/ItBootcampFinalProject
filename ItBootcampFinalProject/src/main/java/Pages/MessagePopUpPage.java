@@ -24,6 +24,19 @@ public class MessagePopUpPage {
     public String getTextMesage(){
         return driver.findElement(By.className("v-snack__content")).getText();
     }
+
+    public void getVisualElementMessageSignUp() {
+        WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//*[@class='v-card v-sheet theme--light']")));
+    }
+    public String getTextMesageSignUp(){
+        return driver.findElement(By.xpath("//*[@class='v-card v-sheet theme--light']/div[2]")).getText();
+    }
+
+    public WebElement getButtonClose(){
+        return driver.findElement(By.xpath("//*[@class='v-card v-sheet theme--light']/div[3]/button"));
+    }
 }
 //metodu koja ceka da pop up bude vidljiv
 //Elemente koji u sebi sadrze tekstove poruke
