@@ -19,11 +19,14 @@ public class NavPage {
     }
 
     public WebElement getLoginLink() {
-        return driver.findElement(By.xpath("//*[@href='/login']"));
+        return driver.findElement(By.xpath("//*[@class='v-toolbar__items']/a[3]"));
     }
 
     public WebElement getLogOutButton(){
         return driver.findElement(By.xpath("//*[@class='hidden-sm-and-down btnLogout v-btn v-btn--flat v-btn--text theme--light v-size--default']"));
+    }
+    public WebElement getSignUpLink(){
+        return driver.findElement(By.xpath("//*[@class='v-toolbar__items']/a[4]"));
     }
 
 }

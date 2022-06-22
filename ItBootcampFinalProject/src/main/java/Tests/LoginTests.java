@@ -49,7 +49,7 @@ public class LoginTests extends BasicTest {
 //Verifikovati da polje za unos lozinke za atribut type ima vrednost password
 //
     @Test(priority = 30)
-    public void displaysErrorsWhenUserDoesNotExist() throws InterruptedException {
+    public void displaysErrorsWhenUserDoesNotExist()  {
         email = "non-existing-user@gmal.com";
         password = "password123";
 
@@ -65,7 +65,7 @@ public class LoginTests extends BasicTest {
 
         Assert.assertTrue(
                 driver.getCurrentUrl().contains("/login"),
-                "[ERROR] Page url does not contain after message: '/login' ");
+                "[ERROR] Page url does not contains: '/login' ");
 
     }
     //email: non-existing-user@gmal.com
@@ -78,7 +78,7 @@ public class LoginTests extends BasicTest {
 //Verifikovati da greska sadrzi poruku User does not exists
 //Verifikovati da se u url-u stranice javlja /login ruta
     @Test(priority = 40)
-    public void displaysErrorsWhenPasswordIsWrong() throws InterruptedException {
+    public void displaysErrorsWhenPasswordIsWrong() {
         email = "admin@admin.com";
         password = "password123";
         navPage.getLoginLink().click();
@@ -92,7 +92,7 @@ public class LoginTests extends BasicTest {
 
         Assert.assertTrue(
                 driver.getCurrentUrl().contains("/login"),
-                "[ERROR] Page url does not contain after message: '/login' ");
+                "[ERROR] Page url does not contains: '/login' ");
 
     }
 
@@ -121,7 +121,7 @@ public class LoginTests extends BasicTest {
         Thread.sleep(2000);
         Assert.assertTrue(
                 driver.getCurrentUrl().contains("/home"),
-                "[ERROR] Page url does not contain after message: '/home' ");
+                "[ERROR] Page url does not contains: '/home' ");
 
     }
 
@@ -134,7 +134,7 @@ public class LoginTests extends BasicTest {
 //Popuniti login formu podacima za logovanje
 //Verifikovati da se u url-u stranice javlja /home ruta
     @Test(priority = 60)
-    public void logout() throws InterruptedException {
+    public void logout() {
 
         Assert.assertTrue(
                  navPage.getLogOutButton().isEnabled(),"[ERROR] Button LogOut is not enabled' ");
