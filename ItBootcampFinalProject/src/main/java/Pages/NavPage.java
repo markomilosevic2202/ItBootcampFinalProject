@@ -7,9 +7,25 @@ import org.openqa.selenium.WebElement;
 public class NavPage {
     WebDriver driver;
 
-    public WebElement getLanguage() {
-        return driver.findElement(By.className("v-icon notranslate mdi mdi-earth theme--light"));
+    public NavPage(WebDriver driver) {
+        this.driver = driver;
     }
+
+    public WebElement getLanguageButton() {
+        return driver.findElement(By.xpath("//button[contains(@class,'btnLocaleActivation ')]"));
+    }
+    public WebElement getEnglishLanguageButton(){
+        return driver.findElement(By.id("list-item-73"));
+    }
+
+    public WebElement getLoginLink() {
+        return driver.findElement(By.xpath("//*[@href='/login']"));
+    }
+
+    public WebElement getLogOutButton(){
+        return driver.findElement(By.xpath("//*[@class='hidden-sm-and-down btnLogout v-btn v-btn--flat v-btn--text theme--light v-size--default']"));
+    }
+
 }
 //Home link
 //About link

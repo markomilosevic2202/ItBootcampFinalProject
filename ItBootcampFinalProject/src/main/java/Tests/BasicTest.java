@@ -5,6 +5,7 @@ import Pages.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+//import org.testng.Assert;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -13,18 +14,20 @@ import java.time.Duration;
 import java.time.Duration;
 
 public class BasicTest {
-    private WebDriver driver;
-    private String baseUrl = "https://vue-demo.daniel-avellaneda.com/";
+     WebDriver driver;
+    protected String baseUrl = "https://vue-demo.daniel-avellaneda.com/";
 
-    CitiesPage citiesPage = new CitiesPage();
+    protected CitiesPage citiesPage;
 
-    LoginPage loginPage = new LoginPage();
+    protected LoginPage loginPage;
 
-    MessagePopUpPage messagePopUpPage = new MessagePopUpPage();
+    MessagePopUpPage messagePopUpPage ;
 
-    NavPage navPage = new NavPage();
+    protected NavPage navPage  ;
 
-    SignupPage signupPage = new SignupPage();
+    protected SignupPage signupPage ;
+
+
 
     @BeforeClass
     public void beforeClass() {
@@ -34,13 +37,22 @@ public class BasicTest {
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
+        navPage=new NavPage(driver);
+        citiesPage = new CitiesPage(driver);
+        loginPage = new LoginPage(driver);
+        messagePopUpPage = new MessagePopUpPage(driver);
+        signupPage = new SignupPage(driver);
+
 
 
 
     }
     @BeforeMethod
     public void beforeMethod() {
-        driver.get(baseUrl);    }
+        driver.get(baseUrl);
+
+
+    }
 
 
 
