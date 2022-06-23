@@ -12,7 +12,7 @@ public class LoginTests extends BasicTest {
 
 
     @Test(priority = 10)
-    public void visitsTheLoginPage() throws InterruptedException {
+    public void visitsTheLoginPage() {
 
         navPage.getLanguageButton().click();
         navPage.getEnglishLanguageButton().click();
@@ -20,6 +20,8 @@ public class LoginTests extends BasicTest {
         Assert.assertTrue(
                 driver.getCurrentUrl().contains("/login"),
                 "[ERROR] Not on a good page");
+
+
 
     }
 

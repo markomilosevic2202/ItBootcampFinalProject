@@ -27,7 +27,8 @@ public class NavPage {
     }
 
     public WebElement getLogOutButton(){
-        return driver.findElement(By.xpath("//*[@class='hidden-sm-and-down btnLogout v-btn v-btn--flat v-btn--text theme--light v-size--default']"));
+        return driver.findElement(By.xpath("//*[@class='hidden-sm-and-down " +
+                "btnLogout v-btn v-btn--flat v-btn--text theme--light v-size--default']"));
     }
     public WebElement getSignUpLink(){
         return driver.findElement(By.xpath("//*[@class='v-toolbar__items']/a[4]"));
@@ -41,8 +42,19 @@ public class NavPage {
         wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//*[@class='v-card v-sheet theme--light']")));
     }
+    public WebElement getLinkAdmin(){
+        return driver.findElement(By.xpath("//*[@class='v-toolbar__items']/button[1]"));
+    }
+    public WebElement getButtonCitis(){
+        return driver.findElement(By.xpath("//*[contains(@class,'btnAdminCities')]"));
+    }
+    public void getVisualElementLinkAdmin() {
+        WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//*[@class='v-toolbar__items']/button[3]")));
 
 
+}
 }
 //Home link
 //About link
