@@ -22,6 +22,13 @@ public class NavPage {
         return driver.findElement(By.id("list-item-73"));
     }
 
+    public WebElement getEsLanguageButton(){
+        return driver.findElement(By.id("list-item-77"));
+    }
+    public String getTextFromHeader() {
+        return driver.findElement(By.xpath("//h1")).getText();
+    }
+
     public WebElement getLoginLink() {
         return driver.findElement(By.xpath("//*[@class='v-toolbar__items']/a[3]"));
     }

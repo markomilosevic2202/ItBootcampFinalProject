@@ -29,5 +29,27 @@ public class AuthRoutesTests extends BasicTest{
 //Koraci:
 //Ucitati /profile stranu
 //Verifikovati da se u url-u stranice javlja ruta /login
+    @Test(priority = 30)
+    public void forbidsVisitsToAdminCitiesUrlIfNotAuthenticated()  {
+        driver.get(baseUrl + "admin/cities");
+        Assert.assertTrue(
+                driver.getCurrentUrl().contains("/login"),
+                "[ERROR] Forbids visits to home url if not authenticated  : '/login' ");
+    }
+    //Test #3: Forbids visits to admin cities url if not authenticated
+//Koraci:
+//Ucitati /admin/cities stranu
+//Verifikovati da se u url-u stranice javlja ruta /login
+    @Test(priority = 40)
+    public void forbidsVisitsToAdminUsersUrlIfNotAuthenticated()  {
+        driver.get(baseUrl + "admin/cities");
+        Assert.assertTrue(
+                driver.getCurrentUrl().contains("/login"),
+                "[ERROR] Forbids visits to home url if not authenticated  : '/login' ");
+    }
 
+//Test #4: Forbids visits to admin users url if not authenticated
+//Koraci:
+//Ucitati /admin/users stranu
+//Verifikovati da se u url-u stranice javlja ruta /login
 }
