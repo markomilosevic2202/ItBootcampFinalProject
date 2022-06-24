@@ -23,7 +23,7 @@ public class NavPage {
     }
 
     public WebElement getEsLanguageButton(){
-        return driver.findElement(By.id("list-item-77"));
+        return driver.findElement(By.className("btnES"));
     }
     public String getTextFromHeader() {
         return driver.findElement(By.xpath("//h1")).getText();

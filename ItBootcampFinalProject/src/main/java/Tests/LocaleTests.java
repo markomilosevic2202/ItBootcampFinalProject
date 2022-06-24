@@ -1,6 +1,7 @@
 package Tests;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LocaleTests extends BasicTest{
@@ -8,10 +9,13 @@ public class LocaleTests extends BasicTest{
     @Test(priority = 10)
     public void visitsTheLoginPage() throws InterruptedException {
         navPage.getLanguageButton().click();
-        navPage.getEnglishLanguageButton().click();
-        navPage.getEsLanguageButton().;
+
+        navPage.getEsLanguageButton().click();
         Thread.sleep(2000);
         System.out.println(navPage.getTextFromHeader());
+        Assert.assertTrue
+                (navPage.getTextFromHeader().contains("Página"),
+                        "[ERROR] Message not contain: 'Página'");
 
     }
 
