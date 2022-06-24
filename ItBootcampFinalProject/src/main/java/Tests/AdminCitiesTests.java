@@ -11,9 +11,9 @@ public class AdminCitiesTests extends BasicTest {
 
     private String city;
 
-    private String newCityName = "xxxdx";
+    private String newCityName = "Marko Milosevic";
 
-    private String oldCityName = "Marko Milosevic /nis";
+    private String oldCityName = "Marko";
 
     @Test(priority = 10)
     public void visitsTheAdminCitiesPageAndListCities() {
@@ -44,38 +44,39 @@ public class AdminCitiesTests extends BasicTest {
 //Klik na admin dugme iz navigacije
 //Klik na Cities dugme iz padajuceg Admin menija
 //Verifikovati da se u url-u stranice javlja /admin/cities ruta
-//@Test(priority = 20)
-//public void checksInputTypesForCreateEditNewCity()  {
-//        navPage.getLinkAdmin().click();
-//        navPage.getButtonCitis().click();
-//        citiesPage.getButtonNewItem().click();
-//        citiesPage.getVisualElementDialogueNewItem();
-//    Assert.assertEquals
-//            (citiesPage.getInputCities().getAttribute("type"),"text",
-//                    "[ERROR] Input type for name cities is not good");
-//
-//}
-//Test #2: Checks input types for create/edit new city
+    @Test(priority = 20)
+    public void checksInputTypesForCreateEditNewCity() {
+        navPage.getLinkAdmin().click();
+        navPage.getButtonCitis().click();
+        citiesPage.getButtonNewItem().click();
+        citiesPage.getVisualElementDialogueNewItem();
+        Assert.assertEquals
+                (citiesPage.getInputCities().getAttribute("type"), "text",
+                        "[ERROR] Input type for name cities is not good");
+
+    }
+
+    //Test #2: Checks input types for create/edit new city
 //Koraci:
 //Klik na admin dugme iz navigacije
 //Klik na Cities dugme iz padajuceg Admin menija
 //Kliknuti na New Item dugme
 //Sacekati da se dijalog za kreiranje i editovanje grada pojavi
 //Verifikovati da polje za unos grada za atribut type ima tekst text
-//    @Test(priority = 30)
-//    public void createNewCity()  {
-//
-//        navPage.getLinkAdmin().click();
-//        navPage.getButtonCitis().click();
-//        citiesPage.getButtonNewItem().click();
-//        citiesPage.getVisualElementDialogueNewItem();
-//        citiesPage.getInputCities().sendKeys(oldCityName);
-//        citiesPage.getButtonSave().click();
-//        citiesPage.getVisualElementDialogueSaved();
-//        Assert.assertTrue
-//                (citiesPage.getTextMesage().contains("Saved successfully"),
-//                        "[ERROR] Message not contain: 'Saved successfully'");
-//}
+    @Test(priority = 30)
+    public void createNewCity() {
+
+        navPage.getLinkAdmin().click();
+        navPage.getButtonCitis().click();
+        citiesPage.getButtonNewItem().click();
+        citiesPage.getVisualElementDialogueNewItem();
+        citiesPage.getInputCities().sendKeys(oldCityName);
+        citiesPage.getButtonSave().click();
+        citiesPage.getVisualElementDialogueSaved();
+        Assert.assertTrue
+                (citiesPage.getTextMesage().contains("Saved successfully"),
+                        "[ERROR] Message not contain: 'Saved successfully'");
+    }
 
     //Test #3: Create new city
 //Podaci:
@@ -91,5 +92,92 @@ public class AdminCitiesTests extends BasicTest {
 //Kliknuti na Save dugme
 //Sacekati da popu za prikaz poruke bude vidljiv
 //Verifikovati da poruka sadrzi tekst Saved successfully
+    @Test(priority = 40)
+    public void editCity()  {
 
+        navPage.getLinkAdmin().click();
+        navPage.getButtonCitis().click();
+        citiesPage.getInputSearch().sendKeys(oldCityName);
+        citiesPage.waitNumberElementsToBe(1);
+        citiesPage.getButtonEdit(1).click();
+        citiesPage.getInputCities().sendKeys(Keys.CONTROL + "a");
+        citiesPage.getInputCities().sendKeys(newCityName);
+        citiesPage.getButtonSave().click();
+        citiesPage.getVisualElementDialogueSaved();
+        //  Thread.sleep(2000);
+
+        Assert.assertTrue
+                (citiesPage.getTextMesage().contains("Saved successfully"),
+                        "[ERROR] Message not contain: 'Saved successfully'");
+    }
+
+    //Test #4: Edit city
+//Podaci:
+//old city name: [Ime i prezime polaznika]’s city
+//new city name: [Ime i prezime polaznika]’s city Edited
+//Koraci:
+//Klik na admin dugme iz navigacije
+//Klik na Cities dugme iz padajuceg Admin menija
+//U polje za pretragu uneti staro ime grada
+//Sacekati da broj redova u tabeli bude 1
+//Kliknuti na dugme Edit iz prvog reda
+//Uneti novo ime za grad
+//Kliknuti na dugme Save
+//Sacekati da popu za prikaz poruke bude vidljiv
+//Verifikovati da poruka sadrzi tekst Saved successfully
+    @Test(priority = 50)
+    public void searchCity() {
+
+        navPage.getLinkAdmin().click();
+        navPage.getButtonCitis().click();
+        citiesPage.getInputSearch().sendKeys(newCityName);
+        citiesPage.waitNumberElementsToBe(1);
+        Assert.assertTrue
+                (citiesPage.getTextFromACell(1, 2).contains(newCityName),
+                        "[ERROR] Message not contain: 'Saved successfully'");
+    }
+
+    //Test #5: Search city
+//Podaci:
+//city name: [Ime i prezime polaznika]’s city Edited
+//Koraci:
+//Klik na admin dugme iz navigacije
+//Klik na Cities dugme iz padajuceg Admin menija
+//U polje za pretragu uneti staro ime grada
+//Sacekati da broj redova u tabeli bude 1
+//Verifikovati da se u Name koloni prvog reda nalazi tekst iz pretrage
+    @Test(priority = 60)
+    public void deleteCity() {
+        navPage.getLinkAdmin().click();
+        navPage.getButtonCitis().click();
+        citiesPage.getInputSearch().sendKeys(newCityName);
+        citiesPage.waitNumberElementsToBe(1);
+        Assert.assertTrue
+                (citiesPage.getTextFromACell(1, 2).contains(newCityName),
+                        "[ERROR] Message not contain: 'Saved successfully'");
+        citiesPage.getButtonDelete(1).click();
+        citiesPage.getVisualElementDialogueDelete();
+        citiesPage.getButtonDeleteFromDialog().click();
+        System.out.println(citiesPage.getTextMesage() + "aaaaaaaaaaaaaaaaaaaaaaaaaa");
+        citiesPage.getVisualElementDialogueSaved();
+        Assert.assertTrue
+                (citiesPage.getTextMesage().contains("Deleted successfully"),
+                        "[ERROR] Message not contain: 'Deleted successfully'");
+
+
+    }
+//Test #5: Delete city
+//Podaci:
+//city name: [Ime i prezime polaznika]’s city Edited
+//Koraci:
+//Klik na admin dugme iz navigacije
+//Klik na Cities dugme iz padajuceg Admin menija
+//U polje za pretragu uneti staro ime grada
+//Sacekati da broj redova u tabeli bude 1
+//Verifikovati da se u Name koloni prvog reda nalazi tekst iz pretrage
+//Kliknuti na dugme Delete iz prvog reda
+//Sacekati da se dijalog za brisanje pojavi
+//Kliknuti na dugme Delete iz dijaloga
+//Sacekati da popu za prikaz poruke bude vidljiv
+//Verifikovati da poruka sadrzi tekst Deleted successfully
 }

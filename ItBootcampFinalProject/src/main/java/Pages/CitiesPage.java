@@ -32,7 +32,7 @@ public class CitiesPage {
     }
     public void getVisualElementDialogueSaved() {
         WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeSelected(
+        wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//*[@class='container container--fluid']/div/div[3]/div/div/div/div/div/button")));
     }
 
@@ -43,7 +43,7 @@ public class CitiesPage {
     }
 
     public String getTextMesage(){
-        return driver.findElement(By.xpath("//*[@class='container container--fluid']/div/div[3]/div/div/div/div/div")).getText();
+        return driver.findElement(By.xpath("//*[@class='container container--fluid']/div/div[3]/div")).getText();
     }
     public WebElement getInputSearch(){
         return driver.findElement(By.id("search"));
@@ -56,7 +56,7 @@ public class CitiesPage {
         return driver.findElement(By.xpath("//*[@class='v-data-table__wrapper']/table/tbody/tr[1]/td/div/button"));
     }
     public WebElement getButtonDeleteFromDialog(){
-        return driver.findElement(By.xpath("//*[contains(@class,'v-size--default green--text')]"));
+        return driver.findElement(By.xpath("//*[contains(@class,'red--text text--lighten3')]"));
     }
     public String getTextFromACell(int row, int cell){
         return driver.findElement(By.xpath(
