@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 public class SignupTests extends BasicTest {
     private String name;
     private String email;
@@ -48,7 +50,7 @@ public class SignupTests extends BasicTest {
     ////Verifikovati da polje za unos lozinke za atribut type ima vrednost password
     ////Verifikovati da polje za unos lozinke za potvrdu za atribut type ima vrednost password
     @Test(priority = 30)
-    public void displaysErrorsWhenEselAlreadyExists() {
+    public void displaysErrorsWhenEselAlreadyExists() throws InterruptedException {
         name = "Another User";
         email = "admin@admin.com";
         password = "12345";
@@ -90,8 +92,8 @@ public class SignupTests extends BasicTest {
 //Verifikovati da se u url-u stranice javlja /signup ruta
     @Test(priority = 40)
     public void Signup() throws InterruptedException {
-        name = "Marko Milosevic";
-        email = "marko.milosevic2202@gmail.com";
+        name = "Marko Milosevicd";
+        email = "marko.milosevic220d2@gmail.com";
         password = "12345";
         confirmPassword = "12345";
         navPage.getSignUpLink().click();
