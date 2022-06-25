@@ -15,8 +15,8 @@ public class LoginTests extends BasicTest {
     public void visitsTheLoginPage() {
 
         navPage.getLanguageButton().click();
-        navPage.getEnglishLanguageButton().click();
-        navPage.getLoginLink().click();
+        navPage.getButtonEnLanguage().click();
+        navPage.getLinkLogin().click();
         Assert.assertTrue(
                 driver.getCurrentUrl().contains("/login"),
                 "[ERROR] Not on a good page");
@@ -34,7 +34,7 @@ public class LoginTests extends BasicTest {
         @Test(priority = 20)
     public void checksInputTypes() {
 
-        navPage.getLoginLink().click();
+        navPage.getLinkLogin().click();
         Assert.assertEquals
                 (loginPage.getEmailInput().getAttribute("type"),"email",
                         "[ERROR] Input type for email is not good");
@@ -55,7 +55,7 @@ public class LoginTests extends BasicTest {
         email = "non-existing-user@gmal.com";
         password = "password123";
 
-        navPage.getLoginLink().click();
+        navPage.getLinkLogin().click();
         loginPage.getEmailInput().sendKeys(email);
         loginPage.getPasswordInput().sendKeys(password);
         loginPage.getSubmitButton().click();
@@ -79,11 +79,12 @@ public class LoginTests extends BasicTest {
 //Sacekati da popu za prikaz greske bude vidljiv
 //Verifikovati da greska sadrzi poruku User does not exists
 //Verifikovati da se u url-u stranice javlja /login ruta
+
     @Test(priority = 40)
     public void displaysErrorsWhenPasswordIsWrong() {
         email = "admin@admin.com";
         password = "password123";
-        navPage.getLoginLink().click();
+        navPage.getLinkLogin().click();
         loginPage.getEmailInput().sendKeys(email);
         loginPage.getPasswordInput().sendKeys(password);
         loginPage.getSubmitButton().click();
@@ -111,12 +112,11 @@ public class LoginTests extends BasicTest {
 //Verifikovati da greska sadrzi poruku Wrong password
 //Verifikovati da se u url-u stranice javlja /login ruta
 
-
     @Test(priority = 50)
     public void login() throws InterruptedException {
         email = "admin@admin.com";
         password = "12345";
-        navPage.getLoginLink().click();
+        navPage.getLinkLogin().click();
         loginPage.getEmailInput().sendKeys(email);
         loginPage.getPasswordInput().sendKeys(password);
         loginPage.getSubmitButton().click();
@@ -135,12 +135,13 @@ public class LoginTests extends BasicTest {
 //Klik na login dugme iz navigacije
 //Popuniti login formu podacima za logovanje
 //Verifikovati da se u url-u stranice javlja /home ruta
+
     @Test(priority = 60)
     public void logout() {
 
         Assert.assertTrue(
-                 navPage.getLogOutButton().isEnabled(),"[ERROR] Button LogOut is not enabled' ");
-        navPage.getLogOutButton().click();
+                 navPage.getLinkLogut().isEnabled(),"[ERROR] Button LogOut is not enabled' ");
+        navPage.getLinkLogut().click();
 
     }
 }

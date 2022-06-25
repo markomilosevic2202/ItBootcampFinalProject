@@ -16,21 +16,21 @@ public class SignupTests extends BasicTest {
 
     @Test(priority = 10)
     public void checksInputTypes() {
-        navPage.getSignUpLink().click();
+        navPage.getLinkSignUp().click();
         Assert.assertTrue(
                 driver.getCurrentUrl().contains("/signup"),
                 "[ERROR] Page url does not contains : '/signup' ");
 
     }
 
-
     //Test #1: Visits the signup page
 //Koraci:
 //Klik na sign up dugme iz navigacije
 //Verifikovati da se u url-u stranice javlja /signup ruta
+
     @Test(priority = 20)
     public void checksInputTypesvisitsTheLoginPage() {
-        navPage.getSignUpLink().click();
+        navPage.getLinkSignUp().click();
         Assert.assertEquals(
                 signupPage.getInputEmail().getAttribute(
                         "type"), "email", "[ERROR] Input type for email is not good");
@@ -49,13 +49,14 @@ public class SignupTests extends BasicTest {
     ////Verifikovati da polje za unos emaila za atribut type ima vrednost email
     ////Verifikovati da polje za unos lozinke za atribut type ima vrednost password
     ////Verifikovati da polje za unos lozinke za potvrdu za atribut type ima vrednost password
+
     @Test(priority = 30)
-    public void displaysErrorsWhenEselAlreadyExists() throws InterruptedException {
+    public void displaysErrorsWhenEselAlreadyExists() {
         name = "Another User";
         email = "admin@admin.com";
         password = "12345";
         confirmPassword = "12345";
-        navPage.getSignUpLink().click();
+        navPage.getLinkSignUp().click();
         Assert.assertTrue(
                 driver.getCurrentUrl().contains("/signup"),
                 "[ERROR] Page url does not contains : '/signup' ");
@@ -90,25 +91,26 @@ public class SignupTests extends BasicTest {
 //Sacekati da popu za prikaz poruke bude vidljiv
 //Verifikovati da greska sadrzi poruku E-mail already exists
 //Verifikovati da se u url-u stranice javlja /signup ruta
+
     @Test(priority = 40)
     public void Signup() throws InterruptedException {
-        name = "Marko Milosevicd";
-        email = "marko.milosevic220d2@gmail.com";
+        name = "Marko Milosevicb";
+        email = "marko.milosevica2202b@gmail.com";
         password = "12345";
         confirmPassword = "12345";
-        navPage.getSignUpLink().click();
+        navPage.getLinkSignUp().click();
         signupPage.getInputName().sendKeys(name);
         signupPage.getInputEmail().sendKeys(email);
         signupPage.getInputPassword().sendKeys(password);
         signupPage.getInputConfirmPassword().sendKeys(confirmPassword);
         signupPage.getButtonSignMeUp().click();
-        navPage.getHomeLink().click();
+        navPage.getLinkHome().click();
         messagePopUpPage.getVisualElementMessageSignUp();
         Assert.assertTrue(
         messagePopUpPage.getTextMesageSignUp().contains("verify your account"),
                 "[ERROR] Message not contains: 'verify your account'");
         messagePopUpPage.getButtonClose().click();
-        navPage.getLogOutButton();
+        navPage.getLinkLogut().click();
 
     }
 //name: Ime i prezime polaznika

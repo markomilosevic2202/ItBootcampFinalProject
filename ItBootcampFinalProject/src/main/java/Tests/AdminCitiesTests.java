@@ -1,15 +1,13 @@
 package Tests;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class AdminCitiesTests extends BasicTest {
     private String email;
-    private String password;
 
-    private String city;
+    private String password;
 
     private String newCityName = "Marko Milosevic";
 
@@ -19,13 +17,13 @@ public class AdminCitiesTests extends BasicTest {
     public void visitsTheAdminCitiesPageAndListCities() {
         email = "admin@admin.com";
         password = "12345";
-        navPage.getLoginLink().click();
+        navPage.getLinkLogin().click();
         loginPage.getEmailInput().sendKeys(email);
         loginPage.getPasswordInput().sendKeys(password);
         loginPage.getSubmitButton().click();
         navPage.getVisualElementLinkAdmin();
         navPage.getLinkAdmin().click();
-        navPage.getButtonCitis().click();
+        navPage.getLinkCitis().click();
         System.out.println(driver.getCurrentUrl());
         Assert.assertTrue(
                 driver.getCurrentUrl().contains("/admin/cities"),
@@ -44,10 +42,11 @@ public class AdminCitiesTests extends BasicTest {
 //Klik na admin dugme iz navigacije
 //Klik na Cities dugme iz padajuceg Admin menija
 //Verifikovati da se u url-u stranice javlja /admin/cities ruta
+
     @Test(priority = 20)
     public void checksInputTypesForCreateEditNewCity() {
         navPage.getLinkAdmin().click();
-        navPage.getButtonCitis().click();
+        navPage.getLinkCitis().click();
         citiesPage.getButtonNewItem().click();
         citiesPage.getVisualElementDialogueNewItem();
         Assert.assertEquals
@@ -63,11 +62,12 @@ public class AdminCitiesTests extends BasicTest {
 //Kliknuti na New Item dugme
 //Sacekati da se dijalog za kreiranje i editovanje grada pojavi
 //Verifikovati da polje za unos grada za atribut type ima tekst text
+
     @Test(priority = 30)
     public void createNewCity() {
 
         navPage.getLinkAdmin().click();
-        navPage.getButtonCitis().click();
+        navPage.getLinkCitis().click();
         citiesPage.getButtonNewItem().click();
         citiesPage.getVisualElementDialogueNewItem();
         citiesPage.getInputCities().sendKeys(oldCityName);
@@ -92,11 +92,12 @@ public class AdminCitiesTests extends BasicTest {
 //Kliknuti na Save dugme
 //Sacekati da popu za prikaz poruke bude vidljiv
 //Verifikovati da poruka sadrzi tekst Saved successfully
+
     @Test(priority = 40)
     public void editCity()  {
 
         navPage.getLinkAdmin().click();
-        navPage.getButtonCitis().click();
+        navPage.getLinkCitis().click();
         citiesPage.getInputSearch().sendKeys(oldCityName);
         citiesPage.waitNumberElementsToBe(1);
         citiesPage.getButtonEdit(1).click();
@@ -125,11 +126,12 @@ public class AdminCitiesTests extends BasicTest {
 //Kliknuti na dugme Save
 //Sacekati da popu za prikaz poruke bude vidljiv
 //Verifikovati da poruka sadrzi tekst Saved successfully
+
     @Test(priority = 50)
     public void searchCity() {
 
         navPage.getLinkAdmin().click();
-        navPage.getButtonCitis().click();
+        navPage.getLinkCitis().click();
         citiesPage.getInputSearch().sendKeys(newCityName);
         citiesPage.waitNumberElementsToBe(1);
         Assert.assertTrue
@@ -146,10 +148,11 @@ public class AdminCitiesTests extends BasicTest {
 //U polje za pretragu uneti staro ime grada
 //Sacekati da broj redova u tabeli bude 1
 //Verifikovati da se u Name koloni prvog reda nalazi tekst iz pretrage
+
     @Test(priority = 60)
     public void deleteCity() {
         navPage.getLinkAdmin().click();
-        navPage.getButtonCitis().click();
+        navPage.getLinkCitis().click();
         citiesPage.getInputSearch().sendKeys(newCityName);
         citiesPage.waitNumberElementsToBe(1);
         Assert.assertTrue
