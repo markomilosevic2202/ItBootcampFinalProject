@@ -52,7 +52,7 @@ public class BasicTest {
         loginPageCreditPro = new LoginPageCreditPro(driver);
         product = new ProductPage(driver);
         checkout = new CheckoutPage(driver);
-        setingsPage = new SetingsPage(driver);
+       // setingsPage = new SetingsPage(driver);
 
 
 
