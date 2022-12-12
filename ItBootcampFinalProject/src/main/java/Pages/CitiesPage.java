@@ -66,6 +66,9 @@ public class CitiesPage {
         return driver.findElement(By.xpath("//*[@class='v-data-table__wrapper']/table/tbody/tr[1]/td/div/button[2]"));
     }
 
+
+
+
 //*[@class='v-data-table__wrapper']/table/tbody/tr[2]/td[2]
 }//*[@class='v-data-table__wrapper']/table/tbody/tr[1]/td/div/button
 //dugme New Item

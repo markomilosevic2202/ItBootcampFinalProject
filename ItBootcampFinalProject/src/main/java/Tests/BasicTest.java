@@ -2,60 +2,68 @@ package Tests;
 
 
 import Pages.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 //import org.testng.Assert;
-import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.time.Duration;
 
-import java.time.Duration;
-
 public class BasicTest {
-     WebDriver driver;
-    protected String baseUrl = "https://vue-demo.daniel-avellaneda.com/";
+    WebDriver driver;
+    protected String baseUrl = "https://crediitpro.com/";
+    protected String email = "marko.milosevic@lumenspei.com";
 
     protected CitiesPage citiesPage;
 
     protected LoginPage loginPage;
 
-    MessagePopUpPage messagePopUpPage ;
+    MessagePopUpPage messagePopUpPage;
 
-    protected NavPage navPage  ;
+    protected NavPage navPage;
 
-    protected SignupPage signupPage ;
+    protected SignupPage signupPage;
 
+    protected HomePage home;
+
+    protected LoginPageCreditPro loginPageCreditPro;
+
+    protected ProductPage product;
+
+    protected CheckoutPage checkout;
+
+    protected SetingsPage setingsPage;
 
 
     @BeforeClass
-    public void beforeClass() {
+    public  void beforeClass() {
         System.setProperty("webdriver.chrome.driver",
-                "src/main/resources/chromedriver.exe");
+                "src/main/resources/chromedriver");
         driver = new ChromeDriver();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
-        navPage=new NavPage(driver);
+        navPage = new NavPage(driver);
         citiesPage = new CitiesPage(driver);
         loginPage = new LoginPage(driver);
         messagePopUpPage = new MessagePopUpPage(driver);
         signupPage = new SignupPage(driver);
-
+        home = new HomePage(driver);
+        loginPageCreditPro = new LoginPageCreditPro(driver);
+        product = new ProductPage(driver);
+        checkout = new CheckoutPage(driver);
+        setingsPage = new SetingsPage(driver);
 
 
 
     }
+
     @BeforeMethod
     public void beforeMethod() {
         driver.get(baseUrl);
 
 
     }
-
-
-
 
 
     @AfterMethod
